@@ -1,0 +1,49 @@
+<div class="col-xs-3">
+    <h2>User info</h2>
+    <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>name</th>
+            <th>
+              <%= user.name %>
+            </th>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th>
+              <%= user.introduction %>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+
+      <% if user == current_user %>
+        <div>
+          <%= link_to edit_user_path(user) do %>
+          <span class="col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_23818" aria-hidden="true"></span>
+          <% end %>
+        </div>
+      <% elsif %>
+        <div>
+           <%= link_to user_path(current_user) do %>
+          <span class="col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_23818"></span>
+          <% end %>
+        </div>
+      <% end %>
+
+          <h2>New book</h2>
+          <%= form_for(book_new, url: books_path) do |f| %>
+            <div class="col-xs-12 field">
+              <label>Title</label><br>
+              <%= f.text_field :title %>
+            </div>
+            <div class="col-xs-12 field">
+              <label>Option</label><br>
+              <%= f.text_area :body %>
+            </div>
+            <div class = "col-xs-12 actions row ">
+              <%= f.submit 'Create Book', class: "btn btn-primary col-xs-12" %>
+            </div>
+            <% end %>
+  </div>
