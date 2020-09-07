@@ -1,12 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
-  def top
-  end
-
-  def about
-  end
-
   def index
   	@users = User.all
   	@book_new = Book.new
